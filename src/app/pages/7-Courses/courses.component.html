@@ -1,1 +1,47 @@
-<p>courses works!</p>
+<div class="flex flex-col bg-[#101a34fd] h-full w-full gap-2 p-5">
+    <div class="card">
+      <p-table
+        [value]="courses"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '40rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+            Course Details
+            <!-- You can add any action buttons or icons here if needed -->
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr class="text-2xl font-bold text-blue-800 border border-black">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Course Material</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-course>
+            @for(course of courses; track $index){
+                <tr class="border-b border-gray-800">
+                    <td class="text-xl font-bold">{{ course.Title }}</td>
+                    <td>{{ course.Description }}</td>
+                    <td class="text-xl font-bold text-yellow-500">{{ course.Price }}</td>
+                    <td>{{ course.Duration }}</td>
+                    <td><a [href]="course.CourseMaterial" target="_blank">View</a></td>
+                    <td><img src="{{ course.CourseImg }}" alt="courseImg"></td>
+                    <td><button (click)="editCourse(course._id)" class="p-2 font-bold text-white bg-green-700 rounded-xl hover:scale-110">Edit</button></td>
+                    <td><button (click)="deleteCourse(course._id)" class="p-2 font-bold text-white bg-red-700 rounded-xl hover:scale-110">Delete</button></td>
+                  </tr>
+            }
+         
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  

@@ -18,6 +18,9 @@ export class ServicesService {
   getServicesByFreelancerId(id:string):Observable<Iservice[]>{
     return this.httpClient.get<Iservice[]>(`https://sb3aat.onrender.com/api/services/freelancer/${id}`);
   }
+  createService(service:Iservice):Observable<Iservice>{
+    return this.httpClient.post<Iservice>('https://sb3aat.onrender.com/api/services',service);
+  }
   updateService(id:string,service:Iservice):Observable<Iservice>{
     return this.httpClient.put<Iservice>(`https://sb3aat.onrender.com/api/services/${id}`,service);
   }

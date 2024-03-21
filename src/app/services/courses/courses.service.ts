@@ -17,6 +17,9 @@ export class CoursesService {
   getCourseByFreelancerId(id:string):Observable<any[]>{
     return this.httpClient.get<any[]>(`https://sb3aat.onrender.com/api/courses/freelancer/${id}`);
   }
+  createCourse(course:any):Observable<any>{
+    return this.httpClient.post<any>('https://sb3aat.onrender.com/api/courses',course);
+  }
   updateCourse(id:string,course:any):Observable<any>{
     return this.httpClient.put<any>(`https://sb3aat.onrender.com/api/courses/${id}`,course);
   }

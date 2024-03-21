@@ -1,47 +1,46 @@
 <div class="flex flex-col bg-[#101a34fd] h-full w-full gap-2 p-5">
-    <div class="card">
-      <p-table
-        [value]="courses"
-        [paginator]="true"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [tableStyle]="{ 'min-width': '40rem' }"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [rowsPerPageOptions]="[5, 10, 20]"
-      >
-        <ng-template pTemplate="caption">
-          <div class="flex align-items-center justify-content-between">
-            Course Details
-            <!-- You can add any action buttons or icons here if needed -->
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr class="text-2xl font-bold text-blue-800 border border-black">
-            <th>Title</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Duration</th>
-            <th>Course Material</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-course>
-            @for(course of courses; track $index){
-                <tr class="border-b border-gray-800">
-                    <td class="text-xl font-bold">{{ course.Title }}</td>
-                    <td>{{ course.Description }}</td>
-                    <td class="text-xl font-bold text-yellow-500">{{ course.Price }}</td>
-                    <td>{{ course.Duration }}</td>
-                    <td><a [href]="course.CourseMaterial" target="_blank">View</a></td>
-                    <td><img src="{{ course.CourseImg }}" alt="courseImg"></td>
-                    <td><button (click)="editCourse(course._id)" class="p-2 font-bold text-white bg-green-700 rounded-xl hover:scale-110">Edit</button></td>
-                    <td><button (click)="deleteCourse(course._id)" class="p-2 font-bold text-white bg-red-700 rounded-xl hover:scale-110">Delete</button></td>
-                  </tr>
-            }
-         
-        </ng-template>
-      </p-table>
-    </div>
+  <div class="flex justify-center gap-5 p-5 mt-3 mb-3 border border-green-500 rounded-3xl add">
+    <h1 class="p-3 text-center text-white border border-l-black">Create new Course</h1>
+    <form (ngSubmit)="onSubmit(courseForm)" [formGroup]="courseForm" class="form-group">
+      <input type="text" id="titleInput" placeholder="Title" class="p-3 m-1 text-black rounded-3xl" formControlName="Title" />
+      <input type="text" id="descriptionInput" placeholder="Description" class="p-3 m-1 text-black rounded-3xl" formControlName="Description" />
+      <input type="text" id="priceInput" placeholder="Price" class="p-3 m-1 text-black rounded-3xl" formControlName="Price" />
+      <input type="text" id="durationInput" placeholder="Duration" class="p-3 m-1 text-black rounded-3xl" formControlName="Duration" />
+      <input type="text" id="courseMaterialInput" placeholder="Course Material" class="p-3 m-1 text-black rounded-3xl" formControlName="CourseMaterial" />
+      <input type="text" id="courseImgInput" placeholder="Course Image" class="p-3 m-1 text-black rounded-3xl" formControlName="CourseImg" />
+      <input type="submit" id="addCourseBtn" value="Add Course" class="p-2 mx-10 font-bold text-white bg-green-700 rounded-xl hover:scale-110" />
+    </form>
   </div>
-  
+  <div class="card">
+ 
+    <table class="table w-full">
+      <thead>
+        <tr class="text-2xl font-bold text-blue-800 border border-black">
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Duration</th>
+          <th>Course Material</th>
+          <th>Course Image</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(course of courses; track course._id){
+          
+          <tr >
+            <td class="text-xl font-bold">{{ course.Title }}</td>
+            <td>{{ course.Description }}</td>
+            <td class="text-xl font-bold text-yellow-500">{{ course.Price }}</td>
+            <td>{{ course.Duration }}</td>
+            <td><a [href]="course.CourseMaterial" target="_blank">View</a></td>
+            <td><img [src]="course.CourseImg" alt="courseImg" width="100"></td>
+            <td><button (click)="editCourse(course._id)" class="p-2 font-bold text-white bg-green-700 rounded-xl hover:scale-110">Edit</button></td>
+            <td><button (click)="deleteCourse(course._id)" class="p-2 font-bold text-white bg-red-700 rounded-xl hover:scale-110">Delete</button></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

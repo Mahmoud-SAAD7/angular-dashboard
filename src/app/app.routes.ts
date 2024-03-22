@@ -43,7 +43,7 @@ export const routes: Routes = [
         path:'orders',component:OrdersComponent
     },
     {
-        path:'**',component:HomeComponent
+        path:'**',component:LoginComponent
     },
     {
         path:'login',component:LoginComponent

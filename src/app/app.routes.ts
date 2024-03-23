@@ -7,60 +7,65 @@ import { CategroiesComponent } from './pages/5-Categories/categroies.component';
 import { ServicesComponent } from './pages/6-Services/services.component';
 import { CoursesComponent } from './pages/7-Courses/courses.component';
 import { OrdersComponent } from './pages/8-Orders/orders.component';
-import { HomeComponent } from './pages/0-home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-
+import { AuthGuard } from './gaurds/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    component: DashboardComponent,
     pathMatch: 'full',
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'admins',
     component: AdminsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'freelancers',
     component: FreelancersComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'categoris',
     component: CategroiesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'services',
     component: ServicesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'courses',
     component: CoursesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'orders',
     component: OrdersComponent,
+
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
   },
   {
     path: '**',

@@ -25,7 +25,10 @@ export class LoginComponent {
       this.authService.getProfile().subscribe((profile) => {
         if (profile.role === 'admin') {
           // Navigate to admin dashboard or home page
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']).then(() => {
+            // After navigation is complete, reload the page
+            window.location.reload();
+          });
         } else {
           // Handle non-admin users
           // show error message

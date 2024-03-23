@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Iservice } from '../../interfaces/service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicesService {
+  private notAcceptedServicesSource = new BehaviorSubject<Iservice[]>([]);
+  notAcceptedServices$ = this.notAcceptedServicesSource.asObservable();
+
   token = localStorage.getItem('token');
   headers = { Authorization: `${this.token}` };
   constructor(private httpClient: HttpClient) {}
@@ -32,7 +36,10 @@ export class ServicesService {
       { headers: this.headers }
     );
   }
-
+  // Update the not accepted services list
+  updateNotAcceptedServices(services: Iservice[]) {
+    this.notAcceptedServicesSource.next(services);
+  }
   //  get service
   getServiceById(id: string): Observable<Iservice> {
     return this.httpClient.get<Iservice>(

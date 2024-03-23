@@ -1,83 +1,83 @@
 <div class="w-full">
-  <div class="bg-[#101a34fd] h-full">
-    <div class="flex justify-center flex-col md:flex-row h-full"> <!-- Set parent container to h-full -->
-      <div class="container grid grid-cols-1 md:grid-cols-2 gap-10 mx-16 font-bold">
-        <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Users</h1>
-          <h1 class="text-4xl font-bold">
+  <div class="bg-[#101a34fd]">
+    <div class="flex justify-center flex-col md:flex-row "> <!-- Set parent container to h-full -->
+      <div class="p-2 grid grid-cols-1 md:grid-cols-3 gap-2  font-bold">
+        <div class=" p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
+          <h4>Users</h4>
+          <h4 class="text-xl font-bold">
             {{usersNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Clients</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Clients</h4>
+          <h4 class="text-xl font-bold">
             {{clientsNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Admins</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Admins</h4>
+          <h4 class="text-xl font-bold">
             {{adminsNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Freelancers</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Freelancers</h4>
+          <h4 class="text-xl font-bold">
             {{freelancersNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1> Categories</h1>
-          <h1 class="text-4xl font-bold">
+          <h4> Categories</h4>
+          <h4 class="text-xl font-bold">
             {{categoriesNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Sub Categories</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Sub Categories</h4>
+          <h4 class="text-xl font-bold">
             {{subCategoriesNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Services</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Services</h4>
+          <h4 class="text-xl font-bold">
             {{servicesNumbers}}
-          </h1>
+          </h4>
         </div>
         <div class="flex-col p-5 text-center text-white num-admins bg-blue-950 rounded-3xl">
-          <h1>Courses</h1>
-          <h1 class="text-4xl font-bold">
+          <h4>Courses</h4>
+          <h4 class="text-xl font-bold">
             {{coursesNumbers}}
-          </h1>
+          </h4>
         </div>
 
       </div>
 
       <div class="top-freelancers bg-blue-950 p-5  flex-col rounded-3xl text-white text-center ml-5">
-        <h1 class=" text-xl md:text-4xl font-bold">Top Freelancers</h1>
+        <h4 class=" text-xl md:text-xl font-bold">Top Freelancers</h4>
         <ul class="flex flex-col gap-2 mt-3 font-bold">
           <li class="flex justify-between p-2 bg-white rounded-full">
-            <h1 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h1>
-            <h1 class="mr-5 text-2xl text-blue-800">10</h1>
+            <h4 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h4>
+            <h4 class="mr-5 text-2xl text-blue-800">10</h4>
           </li>
           <li class="flex justify-between p-2 bg-white rounded-full">
-            <h1 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h1>
-            <h1 class="mr-5 text-2xl text-blue-800">10</h1>
+            <h4 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h4>
+            <h4 class="mr-5 text-2xl text-blue-800">10</h4>
           </li>
           <li class="flex justify-between p-2 bg-white rounded-full">
-            <h1 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h1>
-            <h1 class="mr-5 text-2xl text-blue-800">10</h1>
+            <h4 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h4>
+            <h4 class="mr-5 text-2xl text-blue-800">10</h4>
           </li>
           <li class="flex justify-between p-2 bg-white rounded-full">
-            <h1 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h1>
-            <h1 class="mr-5 text-2xl text-blue-800">10</h1>
+            <h4 class="mx-2 text-2xl text-blue-800">Mahmoud Saad</h4>
+            <h4 class="mr-5 text-2xl text-blue-800">10</h4>
           </li>
         </ul>
       </div>
     </div>
 
     <div class="w-full">
-      <h1 class="mt-5 text-6xl font-bold text-center text-white">Charts</h1>
+      <h4 class="mt-5 text-6xl font-bold text-center text-white">Charts</h4>
     </div>
     <div class="w-full h-full bg-inherit"> <!-- Added h-full class here -->
       <app-charts class="w-full h-full"></app-charts> <!-- Add h-full class here -->

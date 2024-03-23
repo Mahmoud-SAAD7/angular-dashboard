@@ -27,20 +27,29 @@ export class ServicesComponent {
 
   acceptService(id: string) {
     this.ServicesService.acceptService(id).subscribe((data) => {
-      console.log(data);
+      // Update local services list
+      const updatedServices = this.notAcceptedServices.filter(
+        (service) => service._id !== id
+      );
+      this.ServicesService.updateNotAcceptedServices(updatedServices);
     });
   }
-
   public Services: Iservice[] = [];
   public notAcceptedServices: Iservice[] = [];
   constructor(private ServicesService: ServicesService) {}
 
   ngOnInit(): void {
     //  not accepted services
+    // this.ServicesService.getNotAcceptedServices().subscribe((data) => {
+    //   this.notAcceptedServices = data;
+    // });
     this.ServicesService.getNotAcceptedServices().subscribe((data) => {
-      this.notAcceptedServices = data;
+      this.ServicesService.updateNotAcceptedServices(data);
     });
 
+    this.ServicesService.notAcceptedServices$.subscribe((updatedServices) => {
+      this.notAcceptedServices = updatedServices;
+    });
     //  all services
     this.ServicesService.getallServices().subscribe((data) => {
       this.Services = data;

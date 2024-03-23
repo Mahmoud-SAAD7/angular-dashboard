@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from './../../services/courses/courses.service'; // Import CoursesService
 import { Icourse } from '../../interfaces/course';
 import { TableModule } from 'primeng/table';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [TableModule,ReactiveFormsModule],
+  imports: [TableModule, ReactiveFormsModule],
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
   public courses: Icourse[] = [];
@@ -32,11 +37,20 @@ export class CoursesComponent implements OnInit {
     CourseImg: new FormControl('', [Validators.required]),
     Duration: new FormControl('', [Validators.required]),
     CourseMaterial: new FormControl('', [Validators.required]),
-
-  })
+  });
   onSubmit(courseForm: FormGroup) {
     const formValue = this.courseForm.value;
-    if (formValue.InstructorID && formValue.Title && formValue.Description && formValue.Price && formValue.CategoryID && formValue.SubCategoryID && formValue.CourseImg && formValue.Duration && formValue.CourseMaterial) {
+    if (
+      formValue.InstructorID &&
+      formValue.Title &&
+      formValue.Description &&
+      formValue.Price &&
+      formValue.CategoryID &&
+      formValue.SubCategoryID &&
+      formValue.CourseImg &&
+      formValue.Duration &&
+      formValue.CourseMaterial
+    ) {
       this.coursesService.createCourse(formValue).subscribe((data) => {
         console.log(data);
       });
@@ -44,13 +58,17 @@ export class CoursesComponent implements OnInit {
     } else {
       alert('Please fill in all the required fields');
     }
-    }
+  }
 
   deleteCourse(_id: string) {
-   console.log('deleteCourse', _id);
+    console.log('deleteCourse', _id);
   }
 
   editCourse(_id: string) {
     console.log('editCourse', _id);
+  }
+
+  acceptCourse(_id: string) {
+    console.log('acceptCourse', _id);
   }
 }

@@ -15,7 +15,7 @@ export class SidebarComponent {
       link: 'dashboard',
     },
     {
-      name: 'Users',
+      name: 'Clients',
       link: 'users',
     },
     {

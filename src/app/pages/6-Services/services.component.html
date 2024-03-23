@@ -1,70 +1,5 @@
 <div class="flex flex-col bg-[#101a34fd] h-full w-full gap-2 p-5 text-center items-center">
-  <div
-    class="flex justify-center gap-5 p-5 mt-3 mb-3 border border-green-500 rounded-3xl add"
-  >
-    <h1 class="p-3 text-center text-white border border-l-black">Create new Service</h1>
-    <form
-      (ngSubmit)="addService(serviceForm)"
-      [formGroup]="serviceForm"
-      class="form-group"
-    >
-      <input
-        type="text"
-        id="serviceNameInput"
-        placeholder="Service Name"
-        class="p-3 m-1 text-black rounded-3xl"
-        formControlName="title"
-      />
-      <input
-        type="text"
-        id="serviceDescriptionInput"
-        placeholder="Description"
-        class="p-3 rounded-3xl m-1 text-black w-[400px]"
-        formControlName="description"
-      />
-      <input
-        type="text"
-        id="servicePriceInput"
-        placeholder="Price"
-        class="p-3 m-1 text-black rounded-3xl"
-        formControlName="price"
-      />
-      <input
-        type="text"
-        id="serviceDeliveryTimeInput"
-        placeholder="Delivery Time"
-        class="p-3 m-1 text-black rounded-3xl"
-        formControlName="deliveryTime"
-      />
-      <input
-        type="text"
-        id="serviceImgInput"
-        placeholder="Service Image"
-        class="w-[400px] p-3 rounded-3xl m-1 ml-10 text-black"
-        formControlName="serviceImg"
-      />
-      <input
-        type="text"
-        id="freelancerIdInput"
-        placeholder="Freelancer ID"
-        class="p-3 m-1 text-black rounded-3xl"
-        formControlName="freelancerId"
-      />
-      <input
-        type="text"
-        id="subCategoryIdInput"
-        placeholder="Subcategory ID"
-        class="p-3 m-1 text-black rounded-3xl"
-        formControlName="subCategoryId"
-      />
-      <input
-        type="submit"
-        id="addServiceBtn"
-        value="Add Service"
-        class="p-2 mx-10 text-xl font-bold text-white bg-green-700 rounded-xl hover:scale-110"
-      />
-    </form>
-  </div>
+
   <div class="card">
     <table class="table w-full">
       <thead>
@@ -74,12 +9,11 @@
           <th>Price</th>
           <th>Delivery Time</th>
           <th>Service Image</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>Accept</th>
         </tr>
       </thead>
       <tbody>
-        @for(service of Services; track service._id){
+        @for(service of notAcceptedServices; track service._id){
 
         <tr>
           <td class="text-xl font-bold">{{ service.title }}</td>
@@ -87,28 +21,10 @@
           <td class="text-xl font-bold text-yellow-500">{{ service.price }}</td>
           <td>{{ service.deliveryTime }}</td>
           <td>
-            <img
-              [src]="service.serviceImgSrc"
-              [alt]="service.title"
-              width="100"
-              class="shadow-4"
-            />
+            <img [src]="service.serviceImgSrc" [alt]="service.title" width="100" class="shadow-4" />
           </td>
           <td>
-            <button
-              (click)="editService(service._id)"
-              class="p-2 font-bold text-white bg-green-700 rounded-xl hover:scale-110"
-            >
-              Edit
-            </button>
-          </td>
-          <td>
-            <button
-              (click)="deleteService(service._id)"
-              class="p-2 font-bold text-white bg-red-700 rounded-xl hover:scale-110"
-            >
-              Delete
-            </button>
+            <button class="btn btn-green" (click)="acceptService(service._id)">Accept</button>
           </td>
         </tr>
         }

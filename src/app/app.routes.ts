@@ -12,43 +12,58 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
-    {
-        path:'', redirectTo:'dashboard', pathMatch:'full'
-    },
-    {
-        path:'home',component:DashboardComponent
-    },
-    {
-        path:'dashboard', component: DashboardComponent
-    },
-    {
-        path:'users', component: UsersComponent
-    },
-    {
-        path:'admins', component: AdminsComponent
-    },
-    {
-        path:"freelancers", component:FreelancersComponent
-    },
-    {
-        path:'categoris',component:CategroiesComponent
-    },
-    {
-        path:'services',component:ServicesComponent
-    },
-    {
-        path: 'courses',component:CoursesComponent
-    },
-    {
-        path:'orders',component:OrdersComponent
-    },
-    {
-        path:'**',component:LoginComponent
-    },
-    {
-        path:'login',component:LoginComponent
-    },
-    {
-        path:'register',component:RegisterComponent
-    }
-]
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: DashboardComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+  },
+  {
+    path: 'admins',
+    component: AdminsComponent,
+  },
+  {
+    path: 'freelancers',
+    component: FreelancersComponent,
+  },
+  {
+    path: 'categoris',
+    component: CategroiesComponent,
+  },
+  {
+    path: 'services',
+    component: ServicesComponent,
+  },
+  {
+    path: 'courses',
+    component: CoursesComponent,
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: '**',
+    component: LoginComponent,
+  },
+];

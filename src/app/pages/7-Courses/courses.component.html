@@ -9,9 +9,10 @@
           <th>Description</th>
           <th>Price</th>
           <th>Duration</th>
-          <th>Course Material</th>
+
           <th>Course Image</th>
           <th>Accept</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -22,12 +23,16 @@
           <td>{{ course.description }}</td>
           <td class="text-xl font-bold text-yellow-500">{{ course.price }}</td>
           <td>{{ course.duration }}</td>
-          <td><a [href]="course.courseMaterial" target="_blank">View</a></td>
-          <td><img [src]="course.CourseImg" alt="courseImg" width="100"></td>
+          <td><img [src]="course.CourseImg" alt="courseImg" width="100" class="shadow-4"></td>
           <td class="py-3">
             <button
               class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               (click)="acceptCourse(course._id)">Accept</button>
+          </td>
+          <td class="py-3">
+            <button
+              class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              (click)="deleteCourse(course._id)">Delete</button>
           </td>
         </tr>
         }

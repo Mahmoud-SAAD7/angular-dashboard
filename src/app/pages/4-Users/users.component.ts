@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IUser } from '../../interfaces/user';
 import { UsersService } from '../../services/services/user.service';
-
-
+import { TableModule } from 'primeng/table';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [],
+  imports: [TableModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })

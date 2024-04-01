@@ -18,11 +18,11 @@
         @for(course of courses; track course._id){
 
         <tr>
-          <td class="text-xl font-bold">{{ course.Title }}</td>
-          <td>{{ course.Description }}</td>
-          <td class="text-xl font-bold text-yellow-500">{{ course.Price }}</td>
-          <td>{{ course.Duration }}</td>
-          <td><a [href]="course.CourseMaterial" target="_blank">View</a></td>
+          <td class="text-xl font-bold">{{ course.title }}</td>
+          <td>{{ course.description }}</td>
+          <td class="text-xl font-bold text-yellow-500">{{ course.price }}</td>
+          <td>{{ course.duration }}</td>
+          <td><a [href]="course.courseMaterial" target="_blank">View</a></td>
           <td><img [src]="course.CourseImg" alt="courseImg" width="100"></td>
           <td class="py-3">
             <button

@@ -1,12 +1,12 @@
 export interface Icourse {
     _id: string;
-    Title: string;
-    Description: string;
-    InstructorID: string;
-    CategoryID: string;
-    Price: string;
-    Duration: string;
-    CourseMaterial: Object;
+    title: string;
+    description: string;
+    freelanceId: string;
+    categoryId: string;
+    price: string;
+    duration: string;
+    courseMaterial: Object;
     isAccepted: boolean;
     CourseImg:string
 }

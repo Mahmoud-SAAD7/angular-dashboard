@@ -53,6 +53,7 @@ export class ServicesComponent {
     //  all services
     this.ServicesService.getallServices().subscribe((data) => {
       this.Services = data;
+      console.log(data);
     });
   }
 

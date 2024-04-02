@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // import router
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -18,23 +18,26 @@ export class LoginComponent {
   password: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
-
-  onLogin(): void {
-    this.authService.login(this.email, this.password).subscribe((data) => {
+  LoginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  })
+  onLogin(LoginForm: FormGroup): void {
+    this.authService.login(LoginForm.value.email, LoginForm.value.password).subscribe((data) => {
       localStorage.setItem('token', data.token);
       this.authService.getProfile().subscribe((profile) => {
         if (profile.role === 'admin') {
-          // Navigate to admin dashboard or home page
+        
           this.router.navigate(['/']).then(() => {
-            // After navigation is complete, reload the page
+      
             window.location.reload();
           });
         } else {
-          // Handle non-admin users
-          // show error message
+    
           alert('You are not an admin');
         }
       });
     });
+    console.log(LoginForm.value);
   }
 }

@@ -1,22 +1,28 @@
 <!-- login.component.html -->
 
-<form (ngSubmit)="onLogin()" class="w-full mx-auto my-10 p-8 bg-white shadow-md rounded">
-  <div class="mb-6">
-    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-    <input type="email" [(ngModel)]="email" name="email" required
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-  </div>
 
-  <div class="mb-6">
-    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
-    <input type="password" [(ngModel)]="password" name="password" required
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-  </div>
+<div class="p-5 m-auto text-xl font-bold shadow-2xl w-50 bg-zinc-100 rounded-3xl ">
+  <form class="flex flex-col gap-1"[formGroup]="LoginForm" (ngSubmit)="onLogin(LoginForm)">
+    <label class="text-black" for="email" >email</label>
+    <input type="text" id="email" name="email" class="h-[60px] form-control" formControlName="email"/>
+    @if(LoginForm.get('email')?.errors && LoginForm.get('email')?.touched){
 
-  <div class="flex items-center justify-between">
-    <button type="submit"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-      Login
-    </button>
-  </div>
-</form>
+      <p class="text-red-500">the email must be valid</p>
+    }
+    <label class="text-black" for="password">password</label>
+    <input type="password" id="password" name="password" class="h-[60px] form-control" formControlName="password" />
+    @if(LoginForm.get('password')?.errors && LoginForm.get('password')?.touched){
+      
+      <p class="text-red-500">the password must be valid</p>
+    }
+    <div class="flex items-center justify-between">
+      <button
+  
+        type="submit"
+        class="px-4 py-2 mt-5 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

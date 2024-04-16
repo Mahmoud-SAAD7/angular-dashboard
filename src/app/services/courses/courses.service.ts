@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CoursesService {
-
+  token = localStorage.getItem('token');
+  headers = { Authorization: `${this.token}` };
   constructor(private httpClient: HttpClient) { }
   getallCourses():Observable<any[]>{
     return this.httpClient.get<any[]>('https://sb3aat.onrender.com/api/courses');
@@ -25,5 +26,8 @@ export class CoursesService {
   }
   deleteCourse(id:string):Observable<any>{
     return this.httpClient.delete<any>(`https://sb3aat.onrender.com/api/courses/${id}`);
+  }
+  acceptCourse(_id:string):Observable<any>{
+    return this.httpClient.patch<any>(`https://sb3aat.onrender.com/api/courses/accept/${_id}`,null,{ headers: this.headers });
   }
 }

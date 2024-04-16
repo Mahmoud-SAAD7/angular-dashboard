@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -12,20 +13,37 @@ import {
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [TableModule, ReactiveFormsModule],
+  imports: [TableModule, ReactiveFormsModule,FormsModule],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
   public courses: Icourse[] = [];
+  public filteredCourses: Icourse[] = [];
+  public searchQuery: string = '';
+
 
   constructor(private coursesService: CoursesService) {}
 
   ngOnInit(): void {
+    this.getCourses();
+  }
+
+  getCourses(): void {
     this.coursesService.getallCourses().subscribe((data) => {
       this.courses = data;
-      console.log(this.courses);
+      this.filteredCourses = [...this.courses]; // Initialize filtered list
     });
+  }
+
+  filterCourses(): void {
+    if (this.searchQuery.trim() === '') {
+      this.filteredCourses = [...this.courses]; 
+    } else {
+      this.filteredCourses = this.courses.filter((course) =>
+        course.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   }
   courseForm = new FormGroup({
     InstructorID: new FormControl('', [Validators.required]),
@@ -62,6 +80,10 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse(_id: string) {
     console.log('deleteCourse', _id);
+    this.coursesService.deleteCourse(_id).subscribe((data) => {
+      console.log(data);
+      alert('Course deleted successfully');
+    })
   }
 
   editCourse(_id: string) {
@@ -70,5 +92,9 @@ export class CoursesComponent implements OnInit {
 
   acceptCourse(_id: string) {
     console.log('acceptCourse', _id);
+    this.coursesService.acceptCourse(_id).subscribe((data) => {
+      console.log(data);
+      alert('Course accepted successfully');
+    })
   }
 }

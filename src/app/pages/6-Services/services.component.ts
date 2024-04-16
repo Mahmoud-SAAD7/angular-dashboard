@@ -8,16 +8,18 @@ import { Iservice } from '../../interfaces/service';
 import { ServicesService } from './../../services/services/services.service';
 import { Component } from '@angular/core';
 import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [TableModule, ReactiveFormsModule],
+  imports: [TableModule, ReactiveFormsModule,CommonModule,FormsModule],
   templateUrl: './services.component.html',
   styleUrl: './services.component.css',
 })
 export class ServicesComponent {
-  deleteService(id: string) {
-    this.ServicesService.deleteService(id).subscribe((data) => {
+  deleteService(_id: string) {
+    this.ServicesService.deleteService(_id).subscribe((data) => {
       console.log(data);
     });
   }
@@ -36,25 +38,35 @@ export class ServicesComponent {
   }
   public Services: Iservice[] = [];
   public notAcceptedServices: Iservice[] = [];
+  public filteredServices: Iservice[] = [];
+  public searchQuery: string = '';
+  public currentPage: number = 1;
+  public itemsPerPage: number = 10;
+
+
   constructor(private ServicesService: ServicesService) {}
 
   ngOnInit(): void {
-    //  not accepted services
-    // this.ServicesService.getNotAcceptedServices().subscribe((data) => {
-    //   this.notAcceptedServices = data;
-    // });
+    // Fetch not accepted services
     this.ServicesService.getNotAcceptedServices().subscribe((data) => {
       this.ServicesService.updateNotAcceptedServices(data);
     });
 
     this.ServicesService.notAcceptedServices$.subscribe((updatedServices) => {
       this.notAcceptedServices = updatedServices;
+      this.filteredServices = this.notAcceptedServices; // Initialize filtered list
     });
-    //  all services
+
+    // Fetch all services
     this.ServicesService.getallServices().subscribe((data) => {
       this.Services = data;
-      console.log(data);
     });
+  }
+
+  filterServices(): void {
+    this.filteredServices = this.notAcceptedServices.filter((service) =>
+      service.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 
   serviceForm = new FormGroup({
@@ -81,4 +93,5 @@ export class ServicesComponent {
       alert(serviceForm.errors);
     }
   }
+  
 }

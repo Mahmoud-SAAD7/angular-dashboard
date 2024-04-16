@@ -65,14 +65,14 @@ export class ServicesService {
       service
     );
   }
-  deleteService(id: string): Observable<Iservice> {
+  deleteService(_id: string): Observable<Iservice> {
     return this.httpClient.delete<Iservice>(
-      `https://sb3aat.onrender.com/api/services/${id}`
+      `https://sb3aat.onrender.com/api/services/${_id}`
     );
   }
-  acceptService(id: string): Observable<Iservice> {
+  acceptService(_id: string): Observable<Iservice> {
     return this.httpClient.patch<Iservice>(
-      `https://sb3aat.onrender.com/api/services/accept/${id}`,
+      `https://sb3aat.onrender.com/api/services/accept/${_id}`,
       null,
       { headers: this.headers }
     );

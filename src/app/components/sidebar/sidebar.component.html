@@ -30,17 +30,26 @@
       </li>
       <li class="flex items-center gap-5 font-bold text-center cursor-pointer hover:text-yellow-500">
         <i class="text-lg text-white fa-solid fa-laptop-file icon"></i>
-        <a routerLink="services">Services</a>
+        <a routerLink="pendingServices">Pending Services </a>
+      </li>
+      <li class="flex items-center gap-5 font-bold text-center cursor-pointer hover:text-yellow-500">
+        <i class="text-lg text-white fa-solid fa-laptop-file icon"></i>
+        <a routerLink="services"> Services </a>
       </li>
       <li class="flex items-center gap-5 font-bold text-center cursor-pointer hover:text-yellow-500">
         <i class="text-lg text-white fa-solid fa-school icon"></i>
-        <a routerLink="courses">Courses</a>
+        <a routerLink="pendingCourses">Pending Courses</a>
+      </li>
+      <li class="flex items-center gap-5 font-bold text-center cursor-pointer hover:text-yellow-500">
+        <i class="text-lg text-white fa-solid fa-school icon"></i>
+        <a routerLink="courses"> Courses</a>
       </li>
       <li class="flex items-center gap-5 font-bold text-center cursor-pointer hover:text-yellow-500">
         <i class="text-lg text-white fa-solid fa-money-bills icon"></i>
         <a routerLink="orders">Orders</a>
       </li>
-      <li class="flex items-center gap-5 mt-16 font-extrabold text-center text-red-800 cursor-pointer hover:text-red-500">
+      <li
+        class="flex items-center gap-5 mt-16 font-extrabold text-center text-red-800 cursor-pointer hover:text-red-500">
         <i class="text-lg text-red-800 fa-solid fa-sign-out icon"></i>
         <button (click)="logout()">Logout</button>
       </li>

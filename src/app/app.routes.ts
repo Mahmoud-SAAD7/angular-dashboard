@@ -8,6 +8,8 @@ import { ServicesComponent } from './pages/6-Services/services.component';
 import { CoursesComponent } from './pages/7-Courses/courses.component';
 import { OrdersComponent } from './pages/8-Orders/orders.component';
 import { LoginComponent } from './components/login/login.component';
+import { PendingServicesComponent } from './pages/9-PendingServices/pendingServices.component';
+import { PendingCoursesComponent } from './pages/10-PendingCourses/pendingCourses.component';
 import { AuthGuard } from './gaurds/auth.guard';
 export const routes: Routes = [
   {
@@ -47,6 +49,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'pendingServices',
+    component: PendingServicesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'services',
     component: ServicesComponent,
     canActivate: [AuthGuard],
@@ -54,6 +61,11 @@ export const routes: Routes = [
   {
     path: 'courses',
     component: CoursesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'pendingCourses',
+    component: PendingCoursesComponent,
     canActivate: [AuthGuard],
   },
   {
